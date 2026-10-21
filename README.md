@@ -1,4 +1,4 @@
-# TMrex
+# TMrex 🦖
 
 TMrex is a Claude skill that runs a screening-level U.S. trademark clearance: it searches a local copy of the USPTO register, the web for unregistered (common-law) use, and domain names, then writes a report covering likelihood of confusion (the DuPont factors), distinctiveness and Section 2 refusal risks, and class coverage.
 
