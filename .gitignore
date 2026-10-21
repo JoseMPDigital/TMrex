@@ -1,0 +1,14 @@
+# Secrets
+.env
+.env.*
+
+# Local-only: register database, downloads, sync status, logs, generated reports
+data/
+logs/
+reports/
+
+# System and Python clutter
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
