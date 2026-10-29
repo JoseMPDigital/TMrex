@@ -44,6 +44,8 @@ If you already have the annual backfile zips on disk, `sync/load_local.py` rebui
 python3 -I sync/load_local.py /path/to/annual/
 ```
 
+The clearance search keeps the most similar marks of each search with a top-K selection that skips most similarity calculations, looks up each hit's details in a few batched queries instead of four per hit, and returns the same results as before. `python3 -I tests/test_scorer.py` checks the selection, and `python3 -I tests/bench_clearance.py record DIR` then `compare DIR` times a set of marks and checks the results haven't changed.
+
 If you already have a TrademarkBench register, setup clones it instead of building one (instant, using an APFS copy-on-write copy): it looks for `~/Desktop/TrademarkBench/local/uspto_full.db`, or set `BENCH_DB` to its path.
 
 ## Day to day
