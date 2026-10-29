@@ -38,6 +38,12 @@ It is a screening tool, not legal advice. Reports say what was and wasn't search
    - **Claude desktop app or claude.ai:** upload `skill/SKILL.md` as a skill in Settings. In the desktop app, connect `~/tmrex` as a folder in the session so the skill can reach the database.
 5. Type `/tmrex` to see what to provide, or just ask: "Clear BLUE HERON for project management software."
 
+If you already have the annual backfile zips on disk, `sync/load_local.py` rebuilds the register from them using all the CPU cores. `setup.sh` and `build_db.py` don't use it, so nothing changes unless you run it. It gives the same database as `tm_parser.py`. Loading speed, measured on four of the annual parts (508,768 case files), not counting the index build: `tm_parser.py` 6,400 case files per second, `load_local.py --workers 1` 7,200, and `load_local.py` with 16 workers 19,500. The whole register (13,993,768 case files) loaded on an 18-core Mac at 28,000 per second, in 8.3 minutes, plus about 4 minutes to build the search indexes. With one worker the gain is small, because parsing the XML is about 90% of the work; the rest comes from using more cores. `--workers N` sets the number of workers and `--cache-mb` limits memory.
+
+```
+python3 -I sync/load_local.py /path/to/annual/
+```
+
 If you already have a TrademarkBench register, setup clones it instead of building one (instant, using an APFS copy-on-write copy): it looks for `~/Desktop/TrademarkBench/local/uspto_full.db`, or set `BENCH_DB` to its path.
 
 ## Day to day
